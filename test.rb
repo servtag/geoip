@@ -120,6 +120,11 @@ class GeoIPCityTest < Test::Unit::TestCase
     assert_look_up(db, '201.85.50.148', :city, 'São Paulo')
   end
 
+  def test_country_without_region_name
+    db = GeoIP::City.new(@dbfile, :filesystem, true)
+    assert_look_up(db, '203.126.188.238', :city, 'Singapore')
+  end
+
 end
 
 class GeoIPOrgTest < Test::Unit::TestCase
